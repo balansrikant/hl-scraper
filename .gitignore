@@ -4,6 +4,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Jupyter notebooks
+.ipynb_checkpoints
+
 # Business Intelligence projects
 *.rdl.data
 *.bim.layout
