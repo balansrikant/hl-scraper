@@ -1,0 +1,9 @@
+name: hl-scraper
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - pandas
+  - html5lib
+  - flake8
+prefix: C:\ProgramData\Anaconda3\envs\hl-scraper
