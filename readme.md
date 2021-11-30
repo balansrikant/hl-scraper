@@ -1,5 +1,5 @@
 # HL Scraper
-This solution and repository contains python objects for processing my Hargreaves Lansdown SIPP and ISA funds and some analysis on them .
+This solution and repository contains python objects for processing my Hargreaves Lansdown SIPP and ISA funds and some analysis on them.
 
 ## Pre-requisite steps
 1. Log into Hargreaves Lansdown account
@@ -18,4 +18,4 @@ This solution and repository contains python objects for processing my Hargreave
 
 ### Deployment
 1. Create image with dockerfile
-2. Use production_environment.yml for installing ependencies
+2. Use production_environment.yml for installing dependencies

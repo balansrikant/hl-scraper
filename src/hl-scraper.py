@@ -4,7 +4,7 @@ Analyse investments to look for growth over time and percentage of stocks
 across funds
 
 Arguments:
-root_path -- where account summary and investment files are stored
+root_path - where account summary and investment files are stored
 
 Script steps:
 1. Perform pre-requisite steps as per readme doc
@@ -21,7 +21,7 @@ def get_account_summary_metadata(root_path: str) -> list:
     """Load account summary csv file metadata into list
 
     Keyword arguments:
-    :root_path -- path containing csv files
+    :root_path - path containing csv files
 
     Returns:
     :accounts - list of dicts (accounts)
@@ -56,10 +56,10 @@ def get_investment_metadata(root_path: str) -> list:
     """Get list of investment files
 
     Keyword arguments:
-    :root_path -- path containing csv files
+    :root_path - path containing csv files
     """
 
-    # get list of recursive sub-folders; the first item is set of dates 
+    # get list of recursive sub-folders; the first item is set of dates
     folders = [(dn) for dp, dn, f in os.walk(root_path) if 'Investments' in dp]
     date_folders = folders[0]
 
@@ -67,11 +67,13 @@ def get_investment_metadata(root_path: str) -> list:
     investments = []
     for inv_date in date_folders:
         new_path = os.path.join(root_path, 'Investments', inv_date)
-        file_list_list = [f for dp, dn, f in os.walk(new_path) if dp == new_path]
+        file_list_list = [f for dp, dn, f in os.walk(new_path)
+                          if dp == new_path]
 
         for file_list in file_list_list:
             for file in file_list:
-                new_row = {'date': inv_date, 'stock': file.replace('.html', '')}
+                new_row = {'date': inv_date,
+                           'stock': file.replace('.html', '')}
                 investments.append(new_row)
 
     return investments
