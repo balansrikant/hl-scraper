@@ -3,19 +3,12 @@ This solution and repository contains python objects for processing my Hargreave
 
 ## Pre-requisite steps
 1. Log into Hargreaves Lansdown account
-2. Download Account summary as csv files into a folder
-    - Folder path: /root_path/Account-Summary/
-    - File name format: <yyyymmdd-<account_type>-accountsummary.csv
-    - account_type: isa/sipp
+2. Download transaction details as csv (for all calendar years initially and then for latest year)
+    - Folder path: /MyDevelopment/Logs/Data/
+    - File name format: portfolio-summary-<isa/sipp>-<yyyy>.csv
 3. Delete all extra header rows, footer rows, totals row
-4. For each investment (fund/stock), open fact sheet in new tab
-5. Download page as webpage complete format
-    - Folder path: /root_path/Investments/<yyyy-mm-dd>/
-    - File name format: <name of investment>.html
-
-## Script steps
-1. Execute hl-scraper with root_path as argument
-
-### Deployment
-1. Create image with dockerfile
-2. Use production_environment.yml for installing dependencies
+4. Remove special characters like '£'
+4. Open investment-factsheets.csv
+    - For each stock/fund that is not present in the csv file
+    - Use the Hargreaves Lansdown fund finder search etc. to get URL containing factsheet
+    - Add a row in the csv file

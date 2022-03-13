@@ -1,17 +1,32 @@
 # syntax=docker/dockerfile:1
-FROM continuumio/miniconda3
+#FROM continuumio/miniconda3
+FROM python:3.9-slim-buster
 LABEL author="balansrikant@gmail.com"
 LABEL version="1.0"
 
-COPY /src/ .
-COPY ../HL/ ./HL/
-COPY production_environment.yml .
-RUN conda env create -f production_environment.yml
-RUN conda clean -afy
+COPY app .
+#COPY ../app/ ./app/
+#COPY production_environment.yml .
+#RUN conda env create -f production_environment.yml
+#RUN conda clean -afy
 
-EXPOSE 80
+RUN pip install flask \
+                flask-sqlalchemy \
+                pandas \
+                lxml \
+                gunicorn
+#RUN ls
+EXPOSE 5000
+
+#CMD [ \
+#  "conda", "run", "-n", "hlscraper", \
+#  "python", "-m", "run", "--host", "127.0.0.1", "/app/"\
+#]
+
+#CMD [ \
+#  "python", "-m", "run", "--host", "0.0.0.0"\
+#]
 
 CMD [ \
-  "conda", "run", "-n", "hl-scraper", \
-  "python", "-m", "hl-scraper", "/HL/" \
+    "gunicorn", "--bind", "0.0.0.0:5000", "run:app"\
 ]

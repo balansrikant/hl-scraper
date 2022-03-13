@@ -13,6 +13,6 @@ def __init__(self, name, city):
 def get_transactins():
     try:
         result = utility.read_transactions()
-        return jsonify(result)
+        return jsonify(transactions = result)
     except Exception as e:
         return(str(e))
